@@ -1,0 +1,53 @@
+import React, { Component, useState } from 'react';
+import ReactDOM from 'react-dom';
+
+interface AppProps {
+  color?: string;
+}
+
+// const App = (props: AppProps): JSX.Element => {
+//   const [counter, setcounter] = useState(0);
+
+//   const increment = (): void => {
+//     setcounter(counter + 1);
+//   };
+
+//   const decrement = (): void => {
+//     setcounter(counter - 1);
+//   };
+
+//   return (
+//     <div>
+//       <button onClick={increment}>Increment</button>
+//       <button onClick={decrement}>Decrement</button>
+//       <p> {counter}</p>
+//     </div>
+//   );
+// };
+
+export default class App extends Component<AppProps> {
+  state = { counter: 0 };
+
+  increment = () => {
+    this.setState({
+      counter: this.state.counter + 1,
+    });
+  };
+  decrement = () => {
+    this.setState({
+      counter: this.state.counter - 1,
+    });
+  };
+
+  render() {
+    return (
+      <div>
+        <button onClick={() => this.increment()}>Increment</button>
+        <button onClick={() => this.decrement()}>Decrement</button>
+        <p>{this.state.counter}</p>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<App />, document.querySelector('#root'));
